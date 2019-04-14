@@ -1,5 +1,5 @@
 import generateChart from "../helpers/generateChart";
-import userInterface from "../views/userInterface1";
+import userInterface from "../views/userInterface2";
 import clone from "clone";
 
 class Chart {

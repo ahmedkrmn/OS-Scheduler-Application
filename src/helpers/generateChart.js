@@ -12,7 +12,7 @@ function generateChart(data, chartDiv) {
     dataLabels: {
       enabled: true
     },
-    colors: ["#663F59"],
+    colors: ["#263238"],
     series: [
       {
         name: "Process Name",

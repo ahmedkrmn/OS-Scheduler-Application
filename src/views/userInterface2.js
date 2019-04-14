@@ -5,6 +5,7 @@ function userInterface(Chart) {
   const processNameField = document.getElementById("process_name"),
     arrivalTimeField = document.getElementById("arrival_time"),
     burstTimeField = document.getElementById("burst_time"),
+    priorityField = document.getElementById("priority"),
     tbody = document.getElementById("tbody");
 
   processNameField.placeholder = `Process Name: ${current_process}`;
@@ -16,15 +17,17 @@ function userInterface(Chart) {
     e.preventDefault();
 
     const arrivalTime = Math.abs(parseInt(arrivalTimeField.value)),
-      burstTime = Math.abs(parseInt(burstTimeField.value));
+      burstTime = Math.abs(parseInt(burstTimeField.value)),
+      priority = Math.abs(parseInt(priorityField.value));
     arrivalTimeField.value = "";
     burstTimeField.value = "";
+    priorityField.value = "";
 
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${current_process}</td><td>${arrivalTime}</td><td>${burstTime}</td>`;
+    tr.innerHTML = `<td>${current_process}</td><td>${arrivalTime}</td><td>${burstTime}</td><td>${priority}</td>`;
     tbody.appendChild(tr);
 
-    processes.push([current_process, arrivalTime, burstTime]);
+    processes.push([current_process, arrivalTime, burstTime, priority]);
     current_process++;
     totalTime += burstTime;
     processNameField.placeholder = `Process Name: ${current_process}`;
