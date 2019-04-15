@@ -1,6 +1,6 @@
 <html lang="en">
   <head>
-    <title>FCFS Scheduling</title>
+    <title>NP-Priority Scheduling</title>
     <link rel="stylesheet" href="../assets/css/materialize.css" />
     <link rel="stylesheet" href="../assets/css/all.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
@@ -9,7 +9,7 @@
     <nav class="blue-grey darken-1" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo"
-          >First Come First Serve Scheduling</a
+          >Non-Preemptive Priority Scheduling</a
         >
         <ul class="right">
           <a href="./mainWindow.html"><i class="fas fa-grip-lines"></i></a>
@@ -19,12 +19,13 @@
     <br />
     <br />
     <div class="container" style="margin-bottom: 50px">
-      <table class="highlight striped">
+      <table class="striped">
         <thead>
           <tr>
             <th>Process Name</th>
             <th>Arrival Time</th>
             <th>Burst Time</th>
+            <th>Priority</th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -32,10 +33,10 @@
       <div class="row">
         <form class="form col s12">
           <div class="row">
-            <div class="input-field col s4">
+            <div class="input-field col s3">
               <input disabled id="process_name" />
             </div>
-            <div class="input-field col s4">
+            <div class="input-field col s3">
               <input
                 placeholder="Arrival Time"
                 id="arrival_time"
@@ -43,10 +44,18 @@
                 required
               />
             </div>
-            <div class="input-field col s4">
+            <div class="input-field col s3">
               <input
                 placeholder="Burst Time"
                 id="burst_time"
+                type="number"
+                required
+              />
+            </div>
+            <div class="input-field col s3">
+              <input
+                placeholder="Priority"
+                id="priority"
                 type="number"
                 required
               />
@@ -71,6 +80,6 @@
     <br />
     <br />
     <br />
-    <script src="../build/FCFS.js"></script>
+    <script src="../build/NP_Priority.js"></script>
   </body>
 </html>

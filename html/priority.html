@@ -1,11 +1,12 @@
 <html lang="en">
   <head>
-    <title>Starter Template - Materialize</title>
-    <link rel="stylesheet" href="../css/materialize.css" />
-    <link rel="stylesheet" href="../css/all.css" />
+    <title>Priority Scheduling</title>
+    <link rel="stylesheet" href="../assets/css/materialize.css" />
+    <link rel="stylesheet" href="../assets/css/all.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body>
-    <nav class="light-blue lighten-1" role="navigation">
+    <nav class="blue-grey darken-1" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo"
           >Preemptive Priority Scheduling</a
@@ -17,79 +18,68 @@
     </nav>
     <br />
     <br />
-    <div class="container">
-      <div class="section">
-        <div class="row">
-          <div class="col s12 m4">
-            <a href="./fcfs.html"
-              ><h2 class="center red-text">FCFS</h2>
-              <h6 class="light center">First Come First Serve Scheduling</h6>
-              <br />
-              <br
-            /></a>
+    <div class="container" style="margin-bottom: 50px">
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Process Name</th>
+            <th>Arrival Time</th>
+            <th>Burst Time</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="row">
+        <form class="form col s12">
+          <div class="row">
+            <div class="input-field col s3">
+              <input disabled id="process_name" />
+            </div>
+            <div class="input-field col s3">
+              <input
+                placeholder="Arrival Time"
+                id="arrival_time"
+                type="number"
+                required
+              />
+            </div>
+            <div class="input-field col s3">
+              <input
+                placeholder="Burst Time"
+                id="burst_time"
+                type="number"
+                required
+              />
+            </div>
+            <div class="input-field col s3">
+              <input
+                placeholder="Priority"
+                id="priority"
+                type="number"
+                required
+              />
+            </div>
+            <button type="submit" class="btn blue-grey darken-2 col s12">
+              Add process
+            </button>
           </div>
-          <div class="col s12 m4">
-            <a href="./sfj.html"
-              ><h2 class="center red-text">SFJ</h2>
-              <h6 class="light center">
-                Preemptive Shortest Job First Scheduling
-              </h6>
-              <br />
-              <br
-            /></a>
-          </div>
-          <div class="col s12 m4">
-            <a href="./np-sfj.html"
-              ><h2 class="center red-text">NP-SFJ</h2>
-              <h6 class="light center">
-                Non-Preemptive Shortest Job First Scheduling
-              </h6>
-              <br />
-              <br
-            /></a>
-          </div>
-        </div>
-        <br />
-
-        <div class="row">
-          <div class="col s12 m4">
-            <a href="./priority.html"
-              ><h2 class="center red-text">Priority</h2>
-              <h6 class="light center">Preemptive Priority Scheduling</h6>
-              <br />
-              <br />
-            </a>
-          </div>
-          <div class="col s12 m4">
-            <a href="./np-priority.html"
-              ><h2 class="center red-text">NP-Priority</h2>
-              <h6 class="light center">Non-Preemptive Priority Scheduling</h6>
-              <br />
-              <br
-            /></a>
-          </div>
-          <div class="col s12 m4">
-            <a href="./rr.html"
-              ><h2 class="center red-text">RR</h2>
-              <h6 class="light center">Round-Robin Scheduling</h6>
-              <br />
-              <br />
-            </a>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
+    <div id="chart-container" style="margin-bottom: 75px">
+      <div id="chart"></div>
+    </div>
+    <div class="container" style="margin-bottom: 75px">
+      <hr / id="separate" style="display: none">
+      <div style="clear: both">
+        <h5 style="float: left" id="total-waiting"></h5>
+        <h5 style="float: right" id="avg-waiting"></h5>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <script src="../build/Priority.js"></script>
   </body>
-  <script>
-    const schedulers = document.querySelectorAll(".col");
-    schedulers.forEach(scheduler => {
-      scheduler.addEventListener("mouseover", () => {
-        scheduler.style.boxShadow = "1px 2px 10px lightblue";
-      });
-      scheduler.addEventListener("mouseout", () => {
-        scheduler.style.boxShadow = "";
-      });
-    });
-    console.log(schedulers);
-  </script>
 </html>

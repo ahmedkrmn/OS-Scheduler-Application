@@ -9,9 +9,10 @@ class Chart {
     this.chartDiv = chartDiv;
   }
   generate() {
-    //* Sort by arrival time
-    this.processes.sort(function(a, b) {
-      return a[1] - b[1];
+    this.processes.sort((a, b) => {
+      //* Sort by arrival time then process name
+      if (a[1] != b[1]) return a[1] - b[1];
+      return a[0] - b[0];
     });
 
     let avgWaiting = 0;

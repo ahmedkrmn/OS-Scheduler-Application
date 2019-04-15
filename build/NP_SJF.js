@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/app/FCFS.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/app/NP_SJF.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -221,15 +221,15 @@ eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpack
 
 /***/ }),
 
-/***/ "./src/app/FCFS.js":
-/*!*************************!*\
-  !*** ./src/app/FCFS.js ***!
-  \*************************/
+/***/ "./src/app/NP_SJF.js":
+/*!***************************!*\
+  !*** ./src/app/NP_SJF.js ***!
+  \***************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helpers_generateChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/generateChart */ \"./src/helpers/generateChart.js\");\n/* harmony import */ var _views_userInterface1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/userInterface1 */ \"./src/views/userInterface1.js\");\n/* harmony import */ var clone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! clone */ \"./node_modules/clone/clone.js\");\n/* harmony import */ var clone__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(clone__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nclass Chart {\n  constructor(processes, chartDiv) {\n    //! Deep clone the processes array\n    this.processes = clone__WEBPACK_IMPORTED_MODULE_2___default()(processes);\n    this.chartDiv = chartDiv;\n  }\n  generate() {\n    this.processes.sort((a, b) => {\n      //* Sort by arrival time then process name\n      if (a[1] != b[1]) return a[1] - b[1];\n      return a[0] - b[0];\n    });\n\n    let avgWaiting = 0;\n    //* Update the start time of the execution of each process and calculate average waiting time\n    for (let i = 0; i < this.processes.length; i++) {\n      if (i == 0) continue;\n      if (\n        this.processes[i - 1][1] + this.processes[i - 1][2] >\n        this.processes[i][1]\n      ) {\n        avgWaiting +=\n          this.processes[i - 1][1] +\n          this.processes[i - 1][2] -\n          this.processes[i][1];\n        this.processes[i][1] =\n          this.processes[i - 1][1] + this.processes[i - 1][2];\n      }\n    }\n\n    //* Format the chart data\n    let data = [];\n    this.processes.forEach(process => {\n      for (let i = process[1]; i < process[1] + process[2]; i++)\n        data.push({\n          x: i.toString(),\n          y: process[0]\n        });\n    });\n\n    this.chart = Object(_helpers_generateChart__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(data, this.chartDiv);\n    return avgWaiting;\n  }\n\n  render() {\n    this.chart.render();\n  }\n}\n\nObject(_views_userInterface1__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(Chart);\n\n\n//# sourceURL=webpack:///./src/app/FCFS.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helpers_generateChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/generateChart */ \"./src/helpers/generateChart.js\");\n/* harmony import */ var _views_userInterface1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/userInterface1 */ \"./src/views/userInterface1.js\");\n/* harmony import */ var clone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! clone */ \"./node_modules/clone/clone.js\");\n/* harmony import */ var clone__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(clone__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nclass Chart {\n  constructor(processes, chartDiv) {\n    //! Deep clone the processes array\n    this.processes = clone__WEBPACK_IMPORTED_MODULE_2___default()(processes);\n\n    this.chartDiv = chartDiv;\n  }\n  generate() {\n    let scheduler = [],\n      avgWaiting = 0;\n\n    //* Loop until you extract all the processes\n    while (this.processes.length) {\n      this.processes.sort((a, b) => {\n        //* Sort by arrival time then burst time\n        if (a[1] != b[1]) return a[1] - b[1];\n        else return a[2] - b[2];\n      });\n\n      //* Extract the shortest process from the list and add it to the final scheduler list that is to be drawn on the chart\n      const shortestProcess = this.processes.shift();\n      scheduler.push(shortestProcess);\n\n      //* Add the execution time of the shortest process to all the other processes\n      this.processes.forEach(process => {\n        if (shortestProcess[1] + shortestProcess[2] > process[1]) {\n          avgWaiting += shortestProcess[1] + shortestProcess[2] - process[1];\n          process[1] = shortestProcess[1] + shortestProcess[2];\n        }\n      });\n    }\n\n    //* Format the chart data\n    let data = [];\n    scheduler.forEach(process => {\n      for (let i = process[1]; i < process[1] + process[2]; i++)\n        data.push({\n          x: i.toString(),\n          y: process[0]\n        });\n    });\n\n    this.chart = Object(_helpers_generateChart__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(data, this.chartDiv);\n    return avgWaiting;\n  }\n\n  render() {\n    this.chart.render();\n  }\n}\n\nObject(_views_userInterface1__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(Chart);\n\n\n//# sourceURL=webpack:///./src/app/NP_SJF.js?");
 
 /***/ }),
 

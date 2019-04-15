@@ -60,7 +60,14 @@ function userInterface(Chart) {
     ganttChart.render();
 
     //* Scroll to the bottom left to see the chart from the beginning
-    window.scrollTo(0, document.body.scrollHeight);
+    // window.scrollTo(0, document.body.scrollHeight);
+
+    //* Scroll to chart center
+    chartDiv.scrollIntoView({
+      behavior: "auto",
+      block: "center",
+      inline: "center"
+    });
   }
 }
 

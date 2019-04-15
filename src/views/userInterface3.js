@@ -5,8 +5,13 @@ function userInterface(Chart) {
   const processNameField = document.getElementById("process_name"),
     arrivalTimeField = document.getElementById("arrival_time"),
     burstTimeField = document.getElementById("burst_time"),
-    priorityField = document.getElementById("priority"),
     tbody = document.getElementById("tbody");
+
+  let quantum = parseInt(localStorage.getItem("quantum"));
+  let s = quantum > 1 ? "s" : "";
+  document.getElementById(
+    "logo-container"
+  ).innerText = `Round-Robin Scheduling : Quantum ${quantum} Second${s}`;
 
   processNameField.placeholder = `Process Name: ${current_process}`;
 
@@ -17,17 +22,15 @@ function userInterface(Chart) {
     e.preventDefault();
 
     const arrivalTime = Math.abs(parseInt(arrivalTimeField.value)),
-      burstTime = Math.abs(parseInt(burstTimeField.value)),
-      priority = Math.abs(parseInt(priorityField.value));
+      burstTime = Math.abs(parseInt(burstTimeField.value));
     arrivalTimeField.value = "";
     burstTimeField.value = "";
-    priorityField.value = "";
 
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${current_process}</td><td>${arrivalTime}</td><td>${burstTime}</td><td>${priority}</td>`;
+    tr.innerHTML = `<td>${current_process}</td><td>${arrivalTime}</td><td>${burstTime}</td>`;
     tbody.appendChild(tr);
 
-    processes.push([current_process, arrivalTime, burstTime, priority]);
+    processes.push([current_process, arrivalTime, burstTime]);
     current_process++;
     totalTime += burstTime;
     processNameField.placeholder = `Process Name: ${current_process}`;
@@ -38,7 +41,7 @@ function userInterface(Chart) {
     chartDiv.id = "chart";
     document.getElementById("chart-container").appendChild(chartDiv);
 
-    const ganttChart = new Chart(processes, chartDiv);
+    const ganttChart = new Chart(processes, chartDiv, quantum);
 
     const avgWaiting = ganttChart.generate();
 
@@ -63,7 +66,14 @@ function userInterface(Chart) {
     ganttChart.render();
 
     //* Scroll to the bottom left to see the chart from the beginning
-    window.scrollTo(0, document.body.scrollHeight);
+    // window.scrollTo(0, document.body.scrollHeight);
+
+    //* Scroll to chart center
+    chartDiv.scrollIntoView({
+      behavior: "auto",
+      block: "center",
+      inline: "center"
+    });
   }
 }
 

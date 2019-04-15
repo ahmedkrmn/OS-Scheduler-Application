@@ -6,8 +6,8 @@
   "scripts": {
     "start": "electron .",
     "upgrade": "rm -rf node_modules && npm install",
-    "build:prod": "rm -rf build && webpack --env prod",
-    "build:dev": "rm -rf build && webpack --colors --watch --progress --env dev"
+    "build:prod": "rm -rf build && webpack --env dev",
+    "build:dev": "webpack --devtool source-map --colors --watch --progress --env dev"
   },
   "author": "Ahmed Karaman",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "electron": "^4.1.4"
   },
   "devDependencies": {
+    "clone": "^2.1.2",
     "eslint": "^5.16.0",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0"

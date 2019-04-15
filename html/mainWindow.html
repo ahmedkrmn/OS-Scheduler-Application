@@ -1,10 +1,12 @@
 <html lang="en">
   <head>
-    <title>Starter Template - Materialize</title>
-    <link rel="stylesheet" href="../css/materialize.css" />
+    <title>OS Scheduler Application</title>
+    <link rel="stylesheet" href="../assets/css/all.css" />
+    <link rel="stylesheet" href="../assets/css/materialize.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body>
-    <nav class="light-blue lighten-1" role="navigation">
+    <nav class="blue-grey darken-1" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo"
           >OS Scheduler Application</a
@@ -16,76 +18,136 @@
     <div class="container">
       <div class="section">
         <div class="row">
-          <div class="col s12 m4">
-            <a href="./fcfs.html"
-              ><h2 class="center red-text">FCFS</h2>
-              <h6 class="light center">First Come First Serve Scheduling</h6>
-              <br />
-              <br
-            /></a>
-          </div>
-          <div class="col s12 m4">
-            <a href="./sfj.html"
-              ><h2 class="center red-text">SFJ</h2>
-              <h6 class="light center">
-                Preemptive Shortest Job First Scheduling
-              </h6>
-              <br />
-              <br
-            /></a>
-          </div>
-          <div class="col s12 m4">
-            <a href="./np-sfj.html"
-              ><h2 class="center red-text">NP-SFJ</h2>
-              <h6 class="light center">
-                Non-Preemptive Shortest Job First Scheduling
-              </h6>
-              <br />
-              <br
-            /></a>
-          </div>
+          <a href="./FCFS.html">
+            <div class="col s12 m4">
+              <div class="card horizontal">
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <h2 class="center">FCFS</h2>
+                    <h6 class="light center">
+                      First Come First Serve Scheduling
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="./SJF.html">
+            <div class="col s12 m4">
+              <div class="card horizontal">
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <h2 class="center">SJF</h2>
+                    <h6 class="light center">
+                      Preemptive Shortest Job First Scheduling
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="./NP_SJF.html">
+            <div class="col s12 m4">
+              <div class="card horizontal">
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <h2 class="center">NP-SJF</h2>
+                    <h6 class="light center">
+                      Non-Preemptive Shortest Job First Scheduling
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
         <br />
 
         <div class="row">
+          <a href="./Priority.html">
+            <div class="col s12 m4">
+              <div class="card horizontal">
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <h2 class="center">Priority</h2>
+                    <h6 class="light center">
+                      Preemptive Piority Scheduling
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="./NP_Priority.html">
+            <div class="col s12 m4">
+              <div class="card horizontal">
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <h2 class="center">NP-Priority</h2>
+                    <h6 class="light center">
+                      Non-Preemptive Priority Scheduling
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
           <div class="col s12 m4">
-            <a href="./priority.html"
-              ><h2 class="center red-text">Priority</h2>
-              <h6 class="light center">Preemptive Priority Scheduling</h6>
-              <br />
-              <br />
-            </a>
-          </div>
-          <div class="col s12 m4">
-            <a href="./np-priority.html"
-              ><h2 class="center red-text">NP-Priority</h2>
-              <h6 class="light center">Non-Preemptive Priority Scheduling</h6>
-              <br />
-              <br
-            /></a>
-          </div>
-          <div class="col s12 m4">
-            <a href="./rr.html"
-              ><h2 class="center red-text">RR</h2>
-              <h6 class="light center">Round-Robin Scheduling</h6>
-              <br />
-              <br />
-            </a>
+            <div class="card horizontal">
+              <div class="card-stacked">
+                <div class="card-content activator">
+                  <h2 class="center activator">RR</h2>
+                  <h6 class="light center activator">
+                    Round-Robin Scheduling
+                  </h6>
+                </div>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title blue-grey-text text-lighten-2"
+                  >Select Quantum<i class="fas fa-times right"></i
+                ></span>
+                <form id="quantum-form">
+                  <input
+                    placeholder="Quantum"
+                    id="quantum"
+                    type="number"
+                    required
+                  />
+                  <br />
+                  <button type="submit" class="btn blue-grey darken-2 col s12">
+                    Start
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <script src="../assets/js/materialize.min.js"></script>
   </body>
   <script>
-    const schedulers = document.querySelectorAll(".col");
+    const schedulers = document.querySelectorAll(".card");
     schedulers.forEach(scheduler => {
       scheduler.addEventListener("mouseover", () => {
-        scheduler.style.boxShadow = "1px 2px 10px lightblue";
+        scheduler.style.boxShadow = "1px 2px 10px #90a4ae";
       });
       scheduler.addEventListener("mouseout", () => {
         scheduler.style.boxShadow = "";
       });
     });
-    console.log(schedulers);
+
+    const form = document.getElementById("quantum-form");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      let quantum = Math.abs(
+        parseInt(document.getElementById("quantum").value)
+      );
+
+      localStorage.setItem("quantum", quantum);
+      window.location.href = "./RR.html";
+      exit();
+    });
   </script>
 </html>
