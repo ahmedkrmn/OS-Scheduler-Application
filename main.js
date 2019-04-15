@@ -3,12 +3,11 @@ const path = require("path");
 const url = require("url");
 
 // SET ENV
-process.env.NODE_ENV = "development";
+process.env.NODE_ENV = "production";
 
-const { app, BrowserWindow, Menu, ipcMain } = electron;
+const { app, BrowserWindow, Menu } = electron;
 
 let mainWindow;
-let addWindow;
 
 // Listen for app to be ready
 app.on("ready", function() {
@@ -16,7 +15,7 @@ app.on("ready", function() {
   mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
-    title: "Add Shopping List Item"
+    title: "OS Scheduling Application"
   });
   // Load html in window
   mainWindow.loadURL(
@@ -37,60 +36,20 @@ app.on("ready", function() {
   Menu.setApplicationMenu(mainMenu);
 });
 
-// Handle add item window
-function createAddWindow() {
-  addWindow = new BrowserWindow({
-    width: 300,
-    height: 200,
-    title: "Add Shopping List Item"
-  });
-  addWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, "addWindow.html"),
-      protocol: "file:",
-      slashes: true
-    })
-  );
-  // Handle garbage collection
-  addWindow.on("close", function() {
-    addWindow = null;
-  });
-}
-
-// Catch item:add
-ipcMain.on("item:add", function(e, item) {
-  mainWindow.webContents.send("item:add", item);
-  addWindow.close();
-  // Still have a reference to addWindow in memory. Need to reclaim memory (Grabage collection)
-  //addWindow = null;
-});
-
 // Create menu template
 const mainMenuTemplate = [
-  // Each object is a dropdown
   {
-    label: "File",
+    label: "View",
     submenu: [
-      {
-        label: "Add Item",
-        click() {
-          createAddWindow();
-        }
-      },
-      {
-        label: "Clear Items",
-        click() {
-          mainWindow.webContents.send("item:clear");
-        }
-      },
-      {
-        label: "Quit",
-        accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
-        click() {
-          app.quit();
-        }
-      }
+      { role: "resetzoom" },
+      { role: "zoomin" },
+      { role: "zoomout" },
+      { role: "togglefullscreen" }
     ]
+  },
+  {
+    label: "Reset",
+    role: "reload"
   }
 ];
 
@@ -104,9 +63,6 @@ if (process.env.NODE_ENV !== "production") {
   mainMenuTemplate.push({
     label: "Developer Tools",
     submenu: [
-      {
-        role: "reload"
-      },
       {
         label: "Toggle DevTools",
         accelerator: process.platform == "darwin" ? "Command+I" : "Ctrl+I",
