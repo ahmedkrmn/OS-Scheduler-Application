@@ -49,17 +49,7 @@ class Chart {
       });
     }
 
-    //* Format the chart data
-    let data = [];
-    scheduler.forEach(process => {
-      for (let i = process[1]; i < process[1] + process[2]; i++)
-        data.push({
-          x: i.toString(),
-          y: process[0]
-        });
-    });
-
-    this.chart = generateChart(data, this.chartDiv);
+    this.chart = generateChart(scheduler, this.chartDiv);
     return avgWaiting;
   }
 
