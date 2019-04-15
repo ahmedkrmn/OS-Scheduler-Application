@@ -35,6 +35,7 @@ class Chart {
     }
 
     this.chart = generateChart(scheduler, this.chartDiv);
+    return avgWaiting;
   }
 
   render() {
