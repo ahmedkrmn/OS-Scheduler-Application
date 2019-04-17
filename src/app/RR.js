@@ -23,8 +23,8 @@ class Chart {
     while (this.processes.length) {
       let shortestProcess, processName, arrivalTime, burstTime;
 
-      //* If the burst time of the process <= quantum, extract it right away
-      if (this.processes[0][2] <= this.quantum) {
+      //* If the burst time of the process <= quantum, OR it's the only process left, extract it right away
+      if (this.processes[0][2] <= this.quantum || this.processes.length == 1) {
         shortestProcess = this.processes.splice(0, 1)[0]; //! splice() returns the element wrapped in a list
       } else {
         //* else consume "quantuam" seconds of the process

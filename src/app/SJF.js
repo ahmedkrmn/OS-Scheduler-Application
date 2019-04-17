@@ -23,8 +23,9 @@ class Chart {
 
       //* Extract the shortest process from the list on a unit-time basis and add it to the final scheduler list that is to be drawn on the chart
       let shortestProcess;
-      //* If the burst time of the process = 1, extract it right away
-      if (this.processes[0][2] == 1) shortestProcess = this.processes.shift();
+      //* If the burst time of the process = 1, OR it's the only process left, extract it right away
+      if (this.processes[0][2] == 1 || this.processes.length == 1)
+        shortestProcess = this.processes.shift();
       //* else consume 1 second of the process, add it in the scheduler and leave the rest of the process in the list
       else {
         let [processName, arrivalTime, burstTime] = [...this.processes[0]];

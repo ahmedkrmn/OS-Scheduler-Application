@@ -26,10 +26,17 @@ form.addEventListener("submit", addProcess);
 
 function deleteProcess(e) {
   if (e.target.classList.contains("fa-times")) {
-    const processName = parseInt(
-      e.target.parentElement.previousElementSibling.previousElementSibling
-        .textContent
-    );
+    let processName;
+    if (priorityField)
+      processName = parseInt(
+        e.target.parentElement.previousElementSibling.previousElementSibling
+          .previousElementSibling.textContent
+      );
+    else
+      processName = parseInt(
+        e.target.parentElement.previousElementSibling.previousElementSibling
+          .textContent
+      );
     for (let i = processName; i < processes.length; i++) processes[i][0]--;
     processes.splice(processName - 1, 1);
     current_process--;
