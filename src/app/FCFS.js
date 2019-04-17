@@ -1,5 +1,5 @@
 import generateChart from "../helpers/generateChart";
-import userInterface from "../views/userInterface1";
+import userInterface from "../helpers/userInterface";
 import clone from "clone";
 
 class Chart {
@@ -15,7 +15,7 @@ class Chart {
       return a[0] - b[0];
     });
 
-    let avgWaiting = 0;
+    let totalWaiting = 0;
     //* Update the start time of the execution of each process and calculate average waiting time
     for (let i = 0; i < this.processes.length; i++) {
       if (i == 0) continue;
@@ -23,7 +23,7 @@ class Chart {
         this.processes[i - 1][1] + this.processes[i - 1][2] >
         this.processes[i][1]
       ) {
-        avgWaiting +=
+        totalWaiting +=
           this.processes[i - 1][1] +
           this.processes[i - 1][2] -
           this.processes[i][1];
@@ -33,7 +33,7 @@ class Chart {
     }
 
     this.chart = generateChart(this.processes, this.chartDiv);
-    return avgWaiting;
+    return totalWaiting;
   }
 
   render() {

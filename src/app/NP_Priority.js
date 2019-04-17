@@ -1,5 +1,5 @@
 import generateChart from "../helpers/generateChart";
-import userInterface from "../views/userInterface2";
+import userInterface from "../helpers/userInterface";
 import clone from "clone";
 
 class Chart {
@@ -11,7 +11,7 @@ class Chart {
   }
   generate() {
     let scheduler = [],
-      avgWaiting = 0;
+      totalWaiting = 0;
 
     //* Loop until you extract all the processes
     while (this.processes.length) {
@@ -28,14 +28,14 @@ class Chart {
       //* Add the execution time of the highest priority process to all the other processes
       this.processes.forEach(process => {
         if (shortestProcess[1] + shortestProcess[2] > process[1]) {
-          avgWaiting += shortestProcess[1] + shortestProcess[2] - process[1];
+          totalWaiting += shortestProcess[1] + shortestProcess[2] - process[1];
           process[1] = shortestProcess[1] + shortestProcess[2];
         }
       });
     }
 
     this.chart = generateChart(scheduler, this.chartDiv);
-    return avgWaiting;
+    return totalWaiting;
   }
 
   render() {

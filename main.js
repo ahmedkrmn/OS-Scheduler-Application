@@ -1,6 +1,7 @@
 const electron = require("electron");
-const path = require("path");
-const url = require("url");
+const runServer = require("./express-server/app");
+
+runServer();
 
 // SET ENV
 process.env.NODE_ENV = "production";
@@ -9,22 +10,21 @@ const { app, BrowserWindow, Menu } = electron;
 
 let mainWindow;
 
+//! Fix proxy issue which delays sending the request to Express
+app.commandLine.appendSwitch("no-proxy-server");
+
 // Listen for app to be ready
 app.on("ready", function() {
   // Create new window
   mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
-    title: "OS Scheduling Application"
+    title: "Loading ... Please wait"
   });
-  // Load html in window
-  mainWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, "html", "mainWindow.html"),
-      protocol: "file:",
-      slashes: true
-    })
-  );
+
+  // Load mainWindow
+  mainWindow.loadURL("http://localhost:3000");
+
   // Quit app when closed
   mainWindow.on("closed", function() {
     app.quit();

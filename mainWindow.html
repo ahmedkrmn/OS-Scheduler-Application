@@ -1,9 +1,9 @@
 <html lang="en">
   <head>
     <title>OS Scheduler Application</title>
-    <link rel="stylesheet" href="../assets/css/all.min.css" />
-    <link rel="stylesheet" href="../assets/css/materialize.min.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/materialize.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <nav class="blue-grey darken-1" role="navigation">
@@ -18,7 +18,7 @@
     <div class="container">
       <div class="section">
         <div class="row">
-          <a href="./FCFS.html">
+          <a href="/FCFS">
             <div class="col s12 m4">
               <div class="card horizontal">
                 <div class="card-stacked">
@@ -32,7 +32,7 @@
               </div>
             </div>
           </a>
-          <a href="./SJF.html">
+          <a href="/SJF">
             <div class="col s12 m4">
               <div class="card horizontal">
                 <div class="card-stacked">
@@ -46,7 +46,7 @@
               </div>
             </div>
           </a>
-          <a href="./NP_SJF.html">
+          <a href="/NP_SJF">
             <div class="col s12 m4">
               <div class="card horizontal">
                 <div class="card-stacked">
@@ -64,21 +64,21 @@
         <br />
 
         <div class="row">
-          <a href="./Priority.html">
+          <a href="/Priority">
             <div class="col s12 m4">
               <div class="card horizontal">
                 <div class="card-stacked">
                   <div class="card-content">
                     <h2 class="center">Priority</h2>
                     <h6 class="light center">
-                      Preemptive Piority Scheduling
+                      Preemptive Priority Scheduling
                     </h6>
                   </div>
                 </div>
               </div>
             </div>
           </a>
-          <a href="./NP_Priority.html">
+          <a href="/NP_Priority">
             <div class="col s12 m4">
               <div class="card horizontal">
                 <div class="card-stacked">
@@ -102,15 +102,19 @@
                   </h6>
                 </div>
               </div>
-              <div class="card-reveal">
-                <span class="card-title blue-grey-text text-lighten-2"
-                  >Enter Quantum<i class="fas fa-times right"></i
+              <span class="card-reveal">
+                <div class="card-title blue-grey-text text-lighten-2"
+                  >Enter Quantum<i
+                    class="fas fa-times right"
+                    style="color: #90a4ae"
+                  ></i
                 ></span>
-                <form id="quantum-form">
+                <form action="/RR" method="get">
                   <input
                     placeholder="Seconds"
-                    id="quantum"
+                    name="quantum"
                     type="number"
+                    min="1"
                     required
                   />
                   <br />
@@ -124,7 +128,7 @@
         </div>
       </div>
     </div>
-    <script src="../assets/js/materialize.min.js"></script>
+    <script src="/js/materialize.min.js"></script>
   </body>
   <script>
     const schedulers = document.querySelectorAll(".card");
@@ -135,19 +139,6 @@
       scheduler.addEventListener("mouseout", () => {
         scheduler.style.boxShadow = "";
       });
-    });
-
-    const form = document.getElementById("quantum-form");
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-
-      let quantum = Math.abs(
-        parseInt(document.getElementById("quantum").value)
-      );
-
-      localStorage.setItem("quantum", quantum);
-      window.location.href = "./RR.html";
-      exit();
     });
   </script>
 </html>
