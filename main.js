@@ -15,12 +15,10 @@ app.commandLine.appendSwitch("no-proxy-server");
 
 // Listen for app to be ready
 app.on("ready", function() {
-  // Create new window
-  mainWindow = new BrowserWindow({
-    width: 1366,
-    height: 768,
-    title: "Loading ... Please wait"
-  });
+  // Create new window and start maximized
+  mainWindow = new BrowserWindow({ show: false });
+  mainWindow.maximize();
+  mainWindow.show();
 
   // Load mainWindow
   mainWindow.loadURL("http://localhost:3000");
