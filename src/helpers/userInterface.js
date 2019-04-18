@@ -54,11 +54,13 @@ function regenerateTable() {
     if (priorityField)
       tr.innerHTML = `<td>${process[0]}</td><td>${process[1]}</td><td>${
         process[2]
-      }</td><td>${process[3]}<i class="fas fa-times right"></i></td>`;
+      }</td><td>${
+        process[3]
+      }<i class="fas fa-times right" title="Delete process"></i></td>`;
     else
       tr.innerHTML = `<td>${process[0]}</td><td>${process[1]}</td><td>${
         process[2]
-      }<i class="fas fa-times right"></i></td>`;
+      }<i class="fas fa-times right" title="Delete process"></i></td>`;
 
     tbody.appendChild(tr);
   });
@@ -131,9 +133,9 @@ function addProcess(e) {
   const tr = document.createElement("tr");
 
   if (priorityField)
-    tr.innerHTML = `<td>${current_process}</td><td>${arrivalTime}</td><td>${burstTime}</td><td>${priority}<i class="fas fa-times right"></i></td>`;
+    tr.innerHTML = `<td>${current_process}</td><td>${arrivalTime}</td><td>${burstTime}</td><td>${priority}<i class="fas fa-times right" title="Delete process"></i></td>`;
   else
-    tr.innerHTML = `<td>${current_process}</td><td>${arrivalTime}</td><td>${burstTime}<i class="fas fa-times right"></i></td>`;
+    tr.innerHTML = `<td>${current_process}</td><td>${arrivalTime}</td><td>${burstTime}<i class="fas fa-times right" title="Delete process"></i></td>`;
 
   tbody.appendChild(tr);
 
