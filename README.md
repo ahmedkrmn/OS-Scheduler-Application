@@ -1,5 +1,7 @@
 # OS Scheduler Application
 
+![Demo](demo.gif)
+
 An Electron application for simulating major operating system scheduling algorithms.
 
 The app uses EJS templates, and Express. The core app (scheduling algorithms) is written in JavaScript.
