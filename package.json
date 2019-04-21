@@ -8,7 +8,9 @@
     "upgrade": "rm -rf node_modules && npm install",
     "build:prod": "rm -rf build && webpack --mode=production",
     "build:dev": "webpack --devtool source-map --colors --watch --progress --mode=development",
-    "package:win": "electron-packager . OS_Scheduler --platform=win32 --arch=x64 --icon=assets/icons/icon.ico --overwrite --out=release-builds"
+    "package:win": "electron-packager . OS_Scheduler --platform=win32 --arch=x64 --icon=assets/icons/icon.ico --overwrite --out=release-builds",
+    "package:mac": "electron-packager . OS_Scheduler --platform=darwin --arch=x64 --icon=assets/icons/icon.ico --overwrite --out=release-builds",
+    "package-linux" : "electron-packager . OS_Scheduler --platform=linux --arch=x64 --icon=assets/icons/icon.ico --overwrite --out=release-builds"
   },
   "author": "Ahmed Karaman",
   "license": "ISC",
