@@ -23,11 +23,11 @@ An [old version](<https://github.com/ahmedkrmn/OS-Scheduler-Application/tree/pur
 - Remove a process and re-simulate with one click
 - Input validation
 
-## How To Get The App
+## Get The App
 
 ### Build From Source
 
-Make sure you have [Node.js](https://nodejs.org/) installed then follow the steps below.
+Make sure you have [Node.js](https://nodejs.org/) installed then follow the steps below:
 
 1. Fork the repo or download the current branch as [zip](https://github.com/ahmedkrmn/OS-Scheduler-Application/archive/master.zip)
 
@@ -41,4 +41,16 @@ Make sure you have [Node.js](https://nodejs.org/) installed then follow the step
    **This assumes you're on a x64 architecture, modify the `package.json` file to package for x32**
 
 
+
+## Technical details
+
+Here's the full list of used libraries and frameworks:
+
+|                   Tool                   |                             Use                              |
+| :--------------------------------------: | :----------------------------------------------------------: |
+|                 Electron                 |              Packaging as a desktop application              |
+|                 Express                  |    Rendering EJS views and handling URL query parameters     |
+|                   EJS                    |                       Templating HTLM                        |
+| [ApexCharts.js](https://apexcharts.com/) |                       Charting library                       |
+|    [webpack](https://webpack.js.org/)    | Bundling helpers, views and the core algorithms into a single JavaScript for each algorithm |
 
