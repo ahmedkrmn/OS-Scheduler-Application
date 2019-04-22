@@ -46,11 +46,13 @@ Make sure you have [Node.js](https://nodejs.org/) installed then follow the step
 
 Here's the full list of used libraries and frameworks:
 
-|                   Tool                   |                             Use                              |
-| :--------------------------------------: | :----------------------------------------------------------: |
-|                 Electron                 |              Packaging as a desktop application              |
-|                 Express                  |    Rendering EJS views and handling URL query parameters     |
-|                   EJS                    |                       Templating HTLM                        |
-| [ApexCharts.js](https://apexcharts.com/) |                       Charting library                       |
-|    [webpack](https://webpack.js.org/)    | Bundling helpers, views and the core algorithms into a single JavaScript for each algorithm |
+|                    Tool                    |                             Use                              |
+| :----------------------------------------: | :----------------------------------------------------------: |
+|                  Electron                  |              Packaging as a desktop application              |
+|                  Express                   |    Rendering EJS views and handling URL query parameters     |
+|                    EJS                     |                       Templating HTLM                        |
+|  [ApexCharts.js](https://apexcharts.com/)  |                       Charting library                       |
+| [Materialize](https://materializecss.com/) |                        CSS Framework                         |
+|     [webpack](https://webpack.js.org/)     | Bundling helpers, views and the core algorithms into a single JavaScript for each algorithm |
+
 
