@@ -11,8 +11,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "[name].js"
+    filename: "[name].min.js"
   }
   //! No need to transpile with Babel. We're using ES6 Modules here, but the code will run in the browser/Electron and not Node.
 };
-
