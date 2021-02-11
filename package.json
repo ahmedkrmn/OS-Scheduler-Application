@@ -15,7 +15,7 @@
   "author": "Ahmed Karaman",
   "license": "ISC",
   "dependencies": {
-    "apexcharts": "^3.6.6",
+    "apexcharts": "^3.24.0",
     "clone": "^2.1.2",
     "express": "^4.16.4",
     "ejs": "^2.6.1"
